@@ -1,0 +1,13 @@
+{% extends "blogengine/base.html" %}
+
+{% block main %}
+  <h1>{{ article.title }}</h1>
+
+  <p class="author">By {{ article.author }} @ {{ article.creation_time }}</p>
+  <p class="author">Classfied under {{ article.category }}</p>
+  <p class="author">Last update made on {{ article.last_update_time }}</p>
+
+  <div class="text">
+    {{ article.text|safe }}
+  </div>
+{% endblock %}
