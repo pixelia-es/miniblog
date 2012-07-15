@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+SECRET_KEY = ''
+
+ADMINS = (
+
+)
+
+DATABASES = {
+    'default': {
+        'ENGINE': '',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+TEMPLATE_DIRS = (
+    '<BASE>/miniblog/templates',
+)
+
+ANALYTICS_ID = ''
+
+MEDIA_ROOT = '<BASE>/miniblog/media/'
+
+MEDIA_URL = 'http://<YOUR_MEDIA_SERVER>'
+
+STATIC_ROOT = '<BASE>/miniblog/static/'
