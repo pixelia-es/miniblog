@@ -16,7 +16,8 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'creation_time', 'author', 'category')
     list_filter = ['category', 'author']
     search_fields = ['title', 'author']
-    date_hierarchy = 'creation_time'
+    # Seems to not be working with App Engine (not max aggregate).
+    #date_hierarchy = 'creation_time'
 
 
 class ArticleInline(admin.StackedInline):
