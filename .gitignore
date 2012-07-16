@@ -22,3 +22,6 @@ pip-log.txt
 nosetests.xml
 *.mo
 .mr.developer.cfg
+# Google App Engine data.
+.gaedata
+static/*
