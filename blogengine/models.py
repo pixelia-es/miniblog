@@ -15,6 +15,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 
 class Article(models.Model):
     """Article model that stores the text and its metadata."""

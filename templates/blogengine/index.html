@@ -1,18 +1,23 @@
 {% extends "blogengine/base.html" %}
 
-{% block main %}
-  <h1>My Django test blog</h1>
+{% block header%}<h1>{% block title %}My Django test blog{% endblock %}</h1>{% endblock %}
 
+{% block main %}
   {% if articles%}
     {% for article in articles %}
       <div class="article">
-	<h2>{{ article.title }}</h2>
+	<h2><a href="{% url article article.id %}">{{ article.title }}</a></h2>
 	<p class="author">By {{ article.author }} @ {{ article.creation_time }}</p>
 	<div class="text">
 	  {{ article.text|safe }}
 	</div>
       </div>
     {% endfor %}
+    <div class="archives">
+      {% for archive in archives %}
+        <a href="{% url archive year month %}">Archive for {{ archive.year }}/{{ archive.month }}</a>
+      {% endfor %}
+    </div>
   {% else %}
     <p>No articles yet.</p>
   {% endif %}
