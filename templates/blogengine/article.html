@@ -1,8 +1,9 @@
 {% extends "blogengine/base.html" %}
 
-{% block main %}
-  <h1>{{ article.title }}</h1>
+{% block header%}<h1>{% block title %}{{ article.title }}{% endblock %}</h1>{% endblock %}
 
+{% block main %}
+  <a href="{% url index %}">Home</a>
   <p class="author">By {{ article.author }} @ {{ article.creation_time }}</p>
   <p class="author">Classfied under {{ article.category }}</p>
   <p class="author">Last update made on {{ article.last_update_time }}</p>
