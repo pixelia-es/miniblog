@@ -39,8 +39,19 @@ def article(request, article_id):
 
 def archive(request, year, month):
     """Looks for articles in the specified month."""
-    articles = Article.objects.filter(creation_time__year=year,
-                                      creation_time__month=month)
+    start_time = datetime.datetime(year=int(year),
+                                   month=int(month),
+                                   day=1)
+    # This conversion for the time range is needed since App Engine
+    # does not support __month queries (but __year is supported).
+    # Substracting 1 millisecond yields the best resoultion. Time
+    # zone is not supported (Django will store UTC times).
+    end_time = (datetime.datetime(year=int(year),
+                                 month=int(month) + 1,
+                                 day=1) -
+                datetime.timedelta(milliseconds=1))
+    articles = Article.objects.filter(creation_time__gte=start_time,
+                                      creation_time__lte=end_time)
     return render_to_response('blogengine/archive.html',
                               {'year': year,
                                'month': month,
