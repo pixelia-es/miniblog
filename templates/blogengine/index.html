@@ -13,12 +13,9 @@
 	</div>
       </div>
     {% endfor %}
-    <div class="archives">
-      {% for archive in archives %}
-        <a href="{% url archive year month %}">Archive for {{ archive.year }}/{{ archive.month }}</a>
-      {% endfor %}
-    </div>
   {% else %}
     <p>No articles yet.</p>
   {% endif %}
 {% endblock %}
+
+{% block footer %}<a href="{% url archive year month %}">View articles of this month</a>{% endblock %}

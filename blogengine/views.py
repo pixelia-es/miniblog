@@ -4,16 +4,22 @@
 """Views for the blog engine app."""
 
 from blogengine.models import Article
+
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
+
+import datetime
 
 
 def index(request):
     """Shows the first 10 articles if they exists."""
     latest_articles = Article.objects.all().order_by('-creation_time')[:10]
+    now = datetime.datetime.now()
     return render_to_response('blogengine/index.html',
                               {'articles': latest_articles,
+                               'year': now.year,
+                               'month': now.month,
                                # TODO: This can be DRYer with a custom Context,
                                # although for this example seemed overkilling.
                                'ANALYTICS_ID': settings.ANALYTICS_ID},
