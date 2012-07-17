@@ -6,3 +6,11 @@ body {
 .author {
     font-size: smaller;
 }
+
+.article {
+    padding: 0 0 2em 0;
+}
+
+footer {
+    padding: 1em 0;
+}
